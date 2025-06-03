@@ -1,0 +1,33 @@
+[
+  {
+    "currency": "btc",
+    "address": "your_bitcoin_address_here",
+    "name": "Bitcoin Donation Wallet",
+    "description": "Support our project with BTC"
+  },
+  {
+    "currency": "eth",
+    "address": "your_ethereum_address_here",
+    "name": "Ethereum Donation Wallet",
+    "description": "Send ETH to help us grow"
+  },
+  {
+    "currency": "sol",
+    "address": "your_solana_address_here",
+    "name": "Solana Donation Wallet",
+    "description": "Donate SOL to fuel our mission"
+  },
+  {
+    "currency": "bnb",
+    "address": "your_bnb_address_here",
+    "name": "BNB Donation Wallet",
+    "description": "Contribute BNB on Binance Smart Chain"
+  },
+  {
+    "currency": "usdt",
+    "address": "your_ethereum_address_for_usdt_here",
+    "network": "ethereum",
+    "name": "USDT (ERC-20) Donation Wallet",
+    "description": "Send USDT on Ethereum network"
+  }
+]
