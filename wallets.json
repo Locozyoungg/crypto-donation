@@ -1,31 +1,31 @@
 [
   {
     "currency": "btc",
-    "address": "your_bitcoin_address_here",
+    "address": "bc1qxys8eh8fck57pzpn7nd5z6arykg3tx6wu85jj4",
     "name": "Bitcoin Donation Wallet",
     "description": "Support our project with BTC"
   },
   {
     "currency": "eth",
-    "address": "your_ethereum_address_here",
+    "address": "0x18F797bFB60553B9E943C9454BfdED9E78295434",
     "name": "Ethereum Donation Wallet",
     "description": "Send ETH to help us grow"
   },
   {
     "currency": "sol",
-    "address": "your_solana_address_here",
+    "address": "nFe6aYCzmTcLiheiPJACqNSQRsp4nBYzH57SMR9CCib",
     "name": "Solana Donation Wallet",
     "description": "Donate SOL to fuel our mission"
   },
   {
     "currency": "bnb",
-    "address": "your_bnb_address_here",
+    "address": "0x18F797bFB60553B9E943C9454BfdED9E78295434",
     "name": "BNB Donation Wallet",
     "description": "Contribute BNB on Binance Smart Chain"
   },
   {
     "currency": "usdt",
-    "address": "your_ethereum_address_for_usdt_here",
+    "address": "0x18F797bFB60553B9E943C9454BfdED9E78295434",
     "network": "ethereum",
     "name": "USDT (ERC-20) Donation Wallet",
     "description": "Send USDT on Ethereum network"
