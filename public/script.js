@@ -1,19 +1,32 @@
 $(document).ready(function() {
-  // Process hardcoded wallets in HTML
+  // Mock transactions for testing
+  $.get = function(url, success) {
+    success({
+      currency: url.split('/')[2],
+      transactions: [
+        { amount: 100000000, timestamp: new Date() },
+        { amount: 50000000, timestamp: new Date(Date.now() - 86400000) }
+      ]
+    });
+  };
+
+  $('.wallet .copy-btn').click(function() {
+    const address = $(this).parent().find('.address-text').text();
+    copyAddress(address);
+  });
+
   $('.wallet').each(function() {
     const wallet = $(this);
     const currency = wallet.data('currency');
     const address = wallet.data('address');
-    const network = wallet.data('network'); // For USDT
+    const network = wallet.data('network');
     renderWallet(wallet, currency, address, network);
   });
 
-  // Function to render QR code and transactions for a wallet
   function renderWallet(walletElement, currency, address, network) {
     const transactionContainer = walletElement.find('.transactions');
     const qrDiv = walletElement.find('.qrcode')[0];
 
-    // Generate QR code based on currency
     let uri;
     switch (currency.toLowerCase()) {
       case 'btc':
@@ -30,7 +43,7 @@ $(document).ready(function() {
         uri = `binance:${address}`;
         break;
       default:
-        uri = address; // Fallback for unsupported currencies
+        uri = address;
     }
     new QRCode(qrDiv, {
       text: uri,
@@ -38,7 +51,6 @@ $(document).ready(function() {
       height: 128
     });
 
-    // Fetch transactions (will fail locally without a backend)
     $.get(`/api/transactions/${currency}/${address}`, function(res) {
       let html = `<h3>Recent Donations (${res.currency.toUpperCase()})</h3><ul>`;
       if (res.transactions && res.transactions.length > 0) {
@@ -69,14 +81,12 @@ $(document).ready(function() {
   }
 });
 
-// Copy address to clipboard
 function copyAddress(address) {
   navigator.clipboard.writeText(address)
     .then(() => alert('Address copied to clipboard!'))
     .catch(err => console.error('Failed to copy:', err));
 }
 
-// Format crypto amounts
 function formatCryptoAmount(amount, currency) {
   let amountStr;
   if (amount === 0) {
