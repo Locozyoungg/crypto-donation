@@ -1,69 +1,227 @@
-body {
-  font-family: Arial, sans-serif;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #f8f9fa;
-  line-height: 1.6;
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Global styles */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f4f4f9;
+}
+
+/* Navigation */
+nav {
+  background-color: #2c3e50;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav .logo {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #3498db;
+}
+
+/* Header */
 header {
   text-align: center;
-  margin-bottom: 30px;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, #3498db, #8e44ad);
+  color: #fff;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+header p {
+  font-size: 1.2rem;
+}
+
+/* Hero section (Home page) */
+.hero {
+  background: linear-gradient(135deg, #3498db, #8e44ad);
+  padding: 5rem 1rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #e74c3c;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #c0392b;
+}
+
+/* Main content */
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.intro, .about {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.intro h2, .about h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+/* Wallet styles (Donate page) */
+#wallets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
 .wallet {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  margin: 20px 0;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-.address-text {
-  word-break: break-all;
-  background: #f5f5f5;
-  padding: 8px;
-  border-radius: 4px;
-}
-
-button {
-  background: #3a86ff;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-button:hover {
-  background: #2a6adf;
-}
-
-.qrcode {
-  margin: 15px 0;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
+.wallet h2 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.wallet p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.address-text {
+  font-family: monospace;
+  word-break: break-all;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.wallet button {
+  padding: 0.5rem 1rem;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.wallet button:hover {
+  background-color: #2980b9;
+}
+
+.qrcode {
+  margin: 1rem auto;
+}
+
 .transactions {
-  margin-top: 15px;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.transactions h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
 .transactions ul {
   list-style: none;
-  padding: 0;
+  text-align: left;
 }
 
-.transactions li {
-  background: #f5f5f5;
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 4px;
-}
-
+/* Footer */
 footer {
   text-align: center;
-  margin-top: 30px;
-  color: #666;
+  padding: 1rem;
+  background-color: #2c3e50;
+  color: #fff;
+  margin-top: 2rem;
+}
+
+footer a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+  }
+
+  #wallets {
+    grid-template-columns: 1fr;
+  }
 }

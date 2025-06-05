@@ -1,62 +1,59 @@
 $(document).ready(function() {
-  // Check if wallets are defined in HTML or need to be fetched from backend
-  const walletsContainer = $('#wallets');
-  const walletsInHtml = $('.wallet').length > 0;
-
-  if (walletsInHtml) {
-    // Wallets are hardcoded in HTML
-    $('.wallet').each(function() {
-      const wallet = $(this);
-      const currency = wallet.data('currency');
-      const address = wallet.data('address');
-      renderWallet(wallet, currency, address);
-    });
-  } else {
-    // Fetch wallets from backend
-    $.get('/api/wallets', function(wallets) {
-      wallets.forEach(wallet => {
-        const walletHtml = `
-          <div class="wallet" data-currency="${wallet.currency}" data-address="${wallet.address}">
-            <h2>${wallet.currency.toUpperCase()}</h2>
-            <p>Address: <span class="address-text">${wallet.address}</span>
-              <button onclick="copyAddress('${wallet.address}')">Copy</button>
-            </p>
-            <div class="qrcode"></div>
-            <div class="transactions"><p>Loading transactions...</p></div>
-          </div>
-        `;
-        walletsContainer.append(walletHtml);
-        const walletElement = walletsContainer.find(`[data-address="${wallet.address}"]`);
-        renderWallet(walletElement, wallet.currency, wallet.address);
-      });
-    }).fail(function() {
-      walletsContainer.html('<p>Failed to load wallets.</p>');
-    });
-  }
+  // Process hardcoded wallets in HTML
+  $('.wallet').each(function() {
+    const wallet = $(this);
+    const currency = wallet.data('currency');
+    const address = wallet.data('address');
+    const network = wallet.data('network'); // For USDT
+    renderWallet(wallet, currency, address, network);
+  });
 
   // Function to render QR code and transactions for a wallet
-  function renderWallet(walletElement, currency, address) {
+  function renderWallet(walletElement, currency, address, network) {
     const transactionContainer = walletElement.find('.transactions');
     const qrDiv = walletElement.find('.qrcode')[0];
 
-    // Generate QR code
-    const uri = currency === 'btc' ? `bitcoin:${address}` : `ethereum:${address}`;
+    // Generate QR code based on currency
+    let uri;
+    switch (currency.toLowerCase()) {
+      case 'btc':
+        uri = `bitcoin:${address}`;
+        break;
+      case 'eth':
+      case 'usdt':
+        uri = `ethereum:${address}${network ? `?network=${network}` : ''}`;
+        break;
+      case 'sol':
+        uri = `solana:${address}`;
+        break;
+      case 'bnb':
+        uri = `binance:${address}`;
+        break;
+      default:
+        uri = address; // Fallback for unsupported currencies
+    }
     new QRCode(qrDiv, {
       text: uri,
       width: 128,
       height: 128
     });
 
-    // Fetch transactions
+    // Fetch transactions (will fail locally without a backend)
     $.get(`/api/transactions/${currency}/${address}`, function(res) {
       let html = `<h3>Recent Donations (${res.currency.toUpperCase()})</h3><ul>`;
       if (res.transactions && res.transactions.length > 0) {
         res.transactions.forEach(tx => {
           let amount;
-          if (res.currency === 'btc') {
-            amount = formatCryptoAmount(tx.amount / 100000000, res.currency);
-          } else if (res.currency === 'eth') {
-            amount = formatCryptoAmount(parseFloat(tx.amount) / 1e18, res.currency);
+          if (currency === 'btc') {
+            amount = formatCryptoAmount(tx.amount / 100000000, currency);
+          } else if (currency === 'eth' || currency === 'usdt') {
+            amount = formatCryptoAmount(parseFloat(tx.amount) / 1e18, currency);
+          } else if (currency === 'sol') {
+            amount = formatCryptoAmount(parseFloat(tx.amount) / 1e9, currency);
+          } else if (currency === 'bnb') {
+            amount = formatCryptoAmount(parseFloat(tx.amount) / 1e18, currency);
+          } else {
+            amount = formatCryptoAmount(tx.amount, currency);
           }
           const date = new Date(tx.timestamp).toLocaleString();
           html += `<li>${amount} at ${date}</li>`;

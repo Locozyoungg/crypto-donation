@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Donations - Donate</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- QR Code Library -->
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <!-- jQuery for simplicity -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <nav>
+    <div class="logo">Crypto Donation</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="donate.html" class="active">Donate</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+  <header>
+    <h1>Support Our Project</h1>
+    <p>Your crypto donations help us grow. Choose a cryptocurrency below to contribute!</p>
+  </header>
+  <main>
+    <div id="wallets">
+      <div class="wallet" data-currency="btc" data-address="bc1qxys8eh8fck57pzpn7nd5z6arykg3tx6wu85jj4">
+        <h2>Bitcoin Donation Wallet</h2>
+        <p>Support our project with BTC</p>
+        <p>Address: <span class="address-text">bc1qxys8eh8fck57pzpn7nd5z6arykg3tx6wu85jj4</span>
+          <button onclick="copyAddress('bc1qxys8eh8fck57pzpn7nd5z6arykg3tx6wu85jj4')">Copy</button>
+        </p>
+        <div class="qrcode"></div>
+        <div class="transactions"><p>Loading transactions...</p></div>
+      </div>
+      <div class="wallet" data-currency="eth" data-address="0x18F797bFB60553B9E943C9454BfdED9E78295434">
+        <h2>Ethereum Donation Wallet</h2>
+        <p>Send ETH to help us grow</p>
+        <p>Address: <span class="address-text">0x18F797bFB60553B9E943C9454BfdED9E78295434</span>
+          <button onclick="copyAddress('0x18F797bFB60553B9E943C9454BfdED9E78295434')">Copy</button>
+        </p>
+        <div class="qrcode"></div>
+        <div class="transactions"><p>Loading transactions...</p></div>
+      </div>
+      <div class="wallet" data-currency="sol" data-address="nFe6aYCzmTcLiheiPJACqNSQRsp4nBYzH57SMR9CCib">
+        <h2>Solana Donation Wallet</h2>
+        <p>Donate SOL to fuel our mission</p>
+        <p>Address: <span class="address-text">nFe6aYCzmTcLiheiPJACqNSQRsp4nBYzH57SMR9CCib</span>
+          <button onclick="copyAddress('nFe6aYCzmTcLiheiPJACqNSQRsp4nBYzH57SMR9CCib')">Copy</button>
+        </p>
+        <div class="qrcode"></div>
+        <div class="transactions"><p>Loading transactions...</p></div>
+      </div>
+      <div class="wallet" data-currency="bnb" data-address="0x18F797bFB60553B9E943C9454BfdED9E78295434">
+        <h2>BNB Donation Wallet</h2>
+        <p>Contribute BNB on Binance Smart Chain</p>
+        <p>Address: <span class="address-text">0x18F797bFB60553B9E943C9454BfdED9E78295434</span>
+          <button onclick="copyAddress('0x18F797bFB60553B9E943C9454BfdED9E78295434')">Copy</button>
+        </p>
+        <div class="qrcode"></div>
+        <div class="transactions"><p>Loading transactions...</p></div>
+      </div>
+      <div class="wallet" data-currency="usdt" data-address="0x18F797bFB60553B9E943C9454BfdED9E78295434" data-network="ethereum">
+        <h2>USDT (ERC-20) Donation Wallet</h2>
+        <p>Send USDT on Ethereum network</p>
+        <p>Address: <span class="address-text">0x18F797bFB60553B9E943C9454BfdED9E78295434</span>
+          <button onclick="copyAddress('0x18F797bFB60553B9E943C9454BfdED9E78295434')">Copy</button>
+        </p>
+        <div class="qrcode"></div>
+        <div class="transactions"><p>Loading transactions...</p></div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>100% transparent donations powered by blockchain | <a href="about.html">Learn More</a></p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

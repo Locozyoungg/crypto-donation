@@ -3,44 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crypto Donations</title>
+  <title>Crypto Donations - Home</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- QR Code Library -->
-  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-  <!-- jQuery for simplicity -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Support Our Project</h1>
-    <p>Your crypto donations help us grow. Thank you!</p>
+  <nav>
+    <div class="logo">Crypto Donation</div>
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="donate.html">Donate</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+  <header class="hero">
+    <h1>Welcome to Our Crypto Donation Project</h1>
+    <p>Support our mission to build a better future with transparent, blockchain-powered donations.</p>
+    <a href="donate.html" class="cta-button">Donate Now</a>
   </header>
-
   <main>
-    <div id="wallets">
-      <div class="wallet" data-currency="btc" data-address="bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh">
-        <h2>Bitcoin (BTC)</h2>
-        <p>Address: <span class="address-text">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</span>
-          <button onclick="copyAddress('bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh')">Copy</button>
-        </p>
-        <div class="qrcode"></div>
-        <div class="transactions"><p>Loading transactions...</p></div>
-      </div>
-      <div class="wallet" data-currency="eth" data-address="0x742d35Cc6634C0532925a3b844Bc454e4438f44e">
-        <h2>Ethereum (ETH)</h2>
-        <p>Address: <span class="address-text">0x742d35Cc6634C0532925a3b844Bc454e4438f44e</span>
-          <button onclick="copyAddress('0x742d35Cc6634C0532925a3b844Bc454e4438f44e')">Copy</button>
-        </p>
-        <div class="qrcode"></div>
-        <div class="transactions"><p>Loading transactions...</p></div>
-      </div>
-    </div>
+    <section class="intro">
+      <h2>Why Donate?</h2>
+      <p>Your contributions help us fund innovative projects, support communities, and drive positive change. Every donation is tracked on the blockchain for full transparency.</p>
+    </section>
   </main>
-
   <footer>
-    <p>100% transparent donations powered by blockchain</p>
+    <p>100% transparent donations powered by blockchain | <a href="about.html">Learn More</a></p>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
